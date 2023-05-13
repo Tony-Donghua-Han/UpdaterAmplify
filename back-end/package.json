@@ -1,0 +1,11 @@
+{
+  "name": "updateramplify",
+  "version": "1.0.0",
+  "description": "An AWSAmplify Web Host for AutomatedFileUpdate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tony Han",
+  "license": "ISC"
+}

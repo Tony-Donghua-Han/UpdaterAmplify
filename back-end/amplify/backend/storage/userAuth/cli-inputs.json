@@ -1,0 +1,13 @@
+{
+  "resourceName": "userAuth",
+  "policyUUID": "0b9150a2",
+  "bucketName": "installer-update-bucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "S3Trigger8c7667d8",
+  "groupAccess": {}
+}
