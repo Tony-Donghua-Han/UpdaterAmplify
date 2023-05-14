@@ -6,7 +6,6 @@ const FileUpload = () => {
 
     const handleFileChange = (e: any) => {
         const file = e.target.files[0];
-        console.log(file);
         setFile(file);
     }
 

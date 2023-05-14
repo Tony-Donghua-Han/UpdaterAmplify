@@ -43,7 +43,13 @@
         "updateramplify0c869732": {}
       },
       "function": {
-        "S3Trigger8c7667d8": {}
+        "S3Trigger8c7667d8": {
+          "deploymentBucketName": "amplify-updateramplify-personal-95024-deployment",
+          "s3Key": "amplify-builds/S3Trigger8c7667d8-4235356d4f4872473956-build.zip"
+        }
+      },
+      "storage": {
+        "userAuth": {}
       }
     }
   }
