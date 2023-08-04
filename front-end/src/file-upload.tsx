@@ -10,8 +10,6 @@ import { MutableRefObject, useRef, useState } from "react";
 const FileUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [fileCount, setFileCount] = useState(0);
-  const [done, setDone] = useState(false);
-  const [files, setFiles] = useState<any>({});
   const ref = useRef() as MutableRefObject<StorageManagerHandle>;
 
   const processFile = async ({ file, key }: ProcessFileParams) => {
@@ -26,30 +24,20 @@ const FileUpload = () => {
   };
 
   const onClick = () => {
-    console.log(fileCount);
     if (fileCount > 0) {
       setUploading(true);
     }
   };
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" width="900px" margin="auto">
       <StorageManager
         acceptedFileTypes={[",jpeg", ".jpg", ".png"]}
         accessLevel="public"
         maxFileCount={1}
         processFile={processFile}
-        onUploadSuccess={({ key }) => {
-          setFiles((prevFiles: any) => {
-            return {
-              ...prevFiles,
-              [key as any]: {
-                status: "success",
-              },
-            };
-          });
+        onUploadSuccess={() => {
           setUploading(false);
-          setDone(true);
         }}
         displayText={{
           getRemainingFilesText(count) {
@@ -59,23 +47,22 @@ const FileUpload = () => {
         }}
         ref={ref}
       />
-      {done && Object.keys(files).length > 0 ? (
-        <Button
-          onClick={() => {
-            ref.current.clearFiles();
-            setUploading(false);
-            setDone(false);
-            setFiles({});
-            setFileCount(0);
-          }}
-        >
-          Clear Files
-        </Button>
-      ) : (
-        <Button isLoading={uploading} onClick={onClick} isDisabled={fileCount <= 0}>
-          Upload
-        </Button>
-      )}
+      <Button
+        isLoading={uploading}
+        onClick={onClick}
+        isDisabled={fileCount <= 0}
+      >
+        Upload
+      </Button>
+      <Button
+        onClick={() => {
+          ref.current.clearFiles();
+          setUploading(false);
+          setFileCount(0);
+        }}
+      >
+        Clear Files
+      </Button>
     </Flex>
   );
 };
